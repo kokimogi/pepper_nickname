@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package uuid="hitokoto100" version="1.0.23">
+ <names>
+  <name lang="en_US">ひとこと</name>
+  <name lang="en_US-x-scrald">ひとこと</name>
+  <name lang="ja_JP">ひとこと</name>
+  <name lang="ja_JP-x-scrald">ひとこと</name>
+ </names>
+ <descriptions>
+  <description lang="en_US">pepper names you.</description>
+  <description lang="en_US-x-scrald">pepper names you.</description>
+  <description lang="ja_JP">ペッパーが一言をつけてくれます。</description>
+  <description lang="ja_JP-x-scrald">ペッパーが一言をつけてくれます。</description>
+ </descriptions>
+ <supportedLanguages>
+  <language>en_US</language>
+  <language>ja_JP</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+  <language>ja_JP</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <requirements>
+  <naoqiRequirement maxVersion="2.4" minVersion="2.4"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
+</package>

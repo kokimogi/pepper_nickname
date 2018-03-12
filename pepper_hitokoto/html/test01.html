@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Test01 Pepper⇒JS</title>
+    <style>
+
+    #back{
+      background-image: url(adana.jpg);
+      background-size: cover;
+      color: #FF3399;
+      font-weight: bold;
+      font-size: 7em;
+      background-color:#fef9c6;
+    }
+    #furigana{
+      /*ruby-position:before;*/
+    }
+    #message{
+ /*     position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 100px;
+      left: 0px;
+      margin: auto;*/
+
+      /**width: 1000px;**/
+     /* height: 120px; */
+    }
+    .adana{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 130px;
+      left: 0px;
+      margin: auto;
+      max-width: 1280px;
+      max-height: 140px;
+      text-align: center; 
+    }
+    #like{
+      position: absolute;
+      top: 600px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      margin: auto;
+      max-width: 100%;
+      max-height: 30%;
+      background-color: #fef9c6;
+    }
+    </style>
+    <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
+    <link rel="stylesheet" href="users/auris-system/Desktop/pepper_hitokoto/html//css/jquery-letterfx.css" type="text/css" />
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script>
+    /**表示処理**/
+      var session = new QiSession();
+      
+
+      /** PepperからTablet */
+      
+      
+      function toTabletHandler(value) {
+        console.log("PepperQiMessaging/totabletイベント発生: " + value
+          );
+        //document.getElementById("fadein").innerHTML = value ;
+          document.getElementById("message").innerHTML = value ;
+      }
+      function toTablet(value){
+        console.log("PepperQiMessaging/totabletイベント発生: " + value
+          );
+        //document.getElementById("fadein").innerHTML = value ;
+          document.getElementById("furigana").innerHTML = value ;
+      }
+      function question_like(){
+        document.getElementById("like").innerHTML = "<img src ='like.jpg'>";
+      }
+      function startSubscribe() {
+        session.service("ALMemory").done(function (ALMemory) {
+          ALMemory.subscriber("test01/toTabletHandler").done(function(subscriber) {
+            subscriber.signal.connect(toTabletHandler);
+          });
+          ALMemory.subscriber("test01/toTablet").done(function(subscriber) {
+            subscriber.signal.connect(toTablet);
+          });
+          ALMemory.subscriber("test01/question_like").done(function(subscriber){
+            subscriber.signal.connect(question_like);
+          });
+        });
+      }
+
+      /**表示制御**/
+    </script>
+  </head>
+
+  <body onLoad="startSubscribe();"id="back">
+     <!--<h3 id="message" style="font-size: 8em"></h3>-->
+     
+     <!--<marquee id="message"scrollamount="20"></marquee>-->
+<div class="adana">
+      <ruby>
+      <rb id="message"></rb>
+      <rp>（</rp>
+      <rt id="furigana"></rt>
+      <rp>）</rp>
+      </ruby>
+</div>
+<div id="like" onLoad="question_like();">
+
+</div>
+  </body>
+</html>
